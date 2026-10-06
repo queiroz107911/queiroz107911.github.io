@@ -2,8 +2,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>João Pedro Queiroz — Desenvolvedor Backend / Engenheiro de Dados</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<title>João Pedro Queiroz — Engenheiro de Software</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #080c10;
@@ -24,10 +24,26 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    cursor: none;
   }
+
+  h1, h2, h3, .project-name, .exp-role, .edu-name, .btn-primary, .btn-secondary { font-family: 'Syne', sans-serif; }
+
+  @media (hover: hover) and (pointer: fine) { body, a, button { cursor: none; } }
+  @media (hover: none), (pointer: coarse) { .cursor, .cursor-ring { display: none; } }
+
+  a { color: inherit; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .link-inline {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,212,170,0.35);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .link-inline:hover { color: #fff; border-color: #fff; }
 
   /* cursor */
   .cursor {
@@ -154,13 +170,23 @@
   }
 
   .hero-desc {
-    font-size: 17px;
+    font-size: 16px;
     color: var(--muted);
-    line-height: 1.7;
-    max-width: 520px;
+    line-height: 1.8;
+    max-width: 620px;
     margin-bottom: 48px;
     opacity: 0;
     animation: fadeUp 0.6s ease forwards 0.6s;
+  }
+
+  .hero-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.5s;
   }
 
   .hero-actions {
@@ -288,8 +314,8 @@
 
   .sobre-text p {
     font-size: 16px;
-    color: var(--muted);
-    line-height: 1.8;
+    color: #9aa7b6;
+    line-height: 1.85;
     margin-bottom: 20px;
   }
 
@@ -297,6 +323,11 @@
     color: var(--text);
     font-weight: 600;
   }
+
+  .sobre-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
+  .highlight { padding: 16px 18px; background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); }
+  .highlight b { display: block; font-family: 'Syne', sans-serif; font-size: 14px; margin-bottom: 4px; }
+  .highlight span { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
 
   .sobre-info {
     display: flex;
@@ -381,7 +412,7 @@
   }
 
   .skill-tag {
-    padding: 5px 12px;
+    padding: 6px 12px;
     background: rgba(0,212,170,0.07);
     border: 1px solid rgba(0,212,170,0.15);
     color: var(--text);
@@ -393,11 +424,13 @@
   /* PROJETOS */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 24px;
   }
 
   .project-card {
+    display: flex;
+    flex-direction: column;
     background: var(--card);
     border: 1px solid var(--border);
     overflow: hidden;
@@ -433,14 +466,16 @@
   }
 
   .project-link {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px; height: 32px;
+    gap: 6px;
+    padding: 7px 14px;
     border: 1px solid var(--border);
     color: var(--muted);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
     transition: all 0.2s;
   }
 
@@ -449,12 +484,20 @@
     color: var(--accent);
   }
 
-  .project-body { padding: 20px 28px 28px; }
+  .project-body { padding: 20px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+  .project-body .project-stack { margin-top: auto; }
+
+  .project-sub {
+    font-size: 12px;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 16px;
+  }
 
   .project-name {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     letter-spacing: -0.01em;
   }
 
@@ -474,9 +517,9 @@
   }
 
   .project-bullets li {
-    font-size: 13px;
+    font-size: 13.5px;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.65;
     padding-left: 14px;
     position: relative;
   }
@@ -541,6 +584,8 @@
     margin-bottom: 4px;
   }
 
+  .exp-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+
   .exp-company {
     font-size: 13px;
     color: var(--accent);
@@ -556,7 +601,7 @@
   }
 
   .exp-bullets li {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--muted);
     line-height: 1.6;
     padding-left: 16px;
@@ -824,7 +869,13 @@
     .sobre-grid, .contact-grid { grid-template-columns: 1fr; }
     .edu-card { grid-template-columns: 1fr; gap: 8px; }
     footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
-    .nav-links { display: none; }
+    .nav-links { gap: 14px; overflow-x: auto; max-width: 70vw; scrollbar-width: none; }
+    .nav-links a { font-size: 11px; white-space: nowrap; }
+    .exp-card { grid-template-columns: 1fr; gap: 8px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .sobre-highlights { grid-template-columns: 1fr; }
+    .section-title { font-size: 28px; }
+    .contact-link { flex-wrap: wrap; }
   }
 </style>
 </head>
@@ -834,11 +885,11 @@
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <div class="nav-logo">queiroz.dev</div>
+  <a href="#inicio" class="nav-logo" style="text-decoration:none">queiroz.dev</a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#experiencia">Experiência</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
     <li><a href="#projetos">Projetos</a></li>
     <li><a href="#formacao">Formação</a></li>
     <li><a href="#contato">Contato</a></li>
@@ -853,15 +904,16 @@
       João Pedro<br>
       <span>Queiroz</span>
     </h1>
+    <p class="hero-role">Engenheiro de Software · Full Stack &amp; Engenharia de Dados</p>
     <p class="hero-desc">
-      Desenvolvedor Backend / Engenheiro de Dados
+      Construo APIs REST, pipelines de dados end-to-end e infraestrutura como código, com testes automatizados, Docker e CI/CD.
     </p>
     <div class="hero-actions">
       <a href="#projetos" class="btn-primary">Ver projetos →</a>
+      <a href="https://github.com/queiroz107911" target="_blank" rel="noopener" class="btn-secondary">GitHub ↗</a>
       <a href="#contato" class="btn-secondary">Entre em contato</a>
     </div>
   </div>
-
 </section>
 
 <!-- SOBRE -->
@@ -874,14 +926,26 @@
   <div class="sobre-grid">
     <div class="sobre-text reveal">
       <p>
-        <strong>Desenvolvedor Backend e Engenheiro de Dados</strong> com foco em construir pipelines de dados e APIs escaláveis, orientadas a eventos e resilientes a falhas.
+        Sou <strong>engenheiro de software com atuação em full stack e engenharia de dados</strong>, baseado em Brasília - DF. Gosto de construir sistemas completos: da ingestão do dado bruto até a API e o painel que o usuário final enxerga.
       </p>
       <p>
-        Atualmente trabalho na <strong>Age Fibra</strong> como Analista de Dados Aprendiz, construindo relatórios e dashboards em Power BI, otimizando queries SQL e automatizando processos operacionais. Em paralelo, desenvolvo projetos práticos que comprovam capacidade técnica em <strong>Node.js, FastAPI, Django, AWS, Terraform, Docker, PySpark e Databricks</strong>.
+        No <strong>back-end</strong>, desenvolvo APIs REST em <strong>Python (FastAPI)</strong> e <strong>TypeScript (Node.js, Fastify)</strong>, com autenticação <strong>JWT</strong>, controle de acesso por papéis (<strong>RBAC</strong>), processamento assíncrono com filas, testes automatizados, <strong>Docker</strong> e <strong>CI/CD</strong> com GitHub Actions. Dou atenção especial à confiabilidade: idempotência, retry com backoff, dead-letter, observabilidade e métricas.
       </p>
       <p>
-        Busco vagas para <strong>estagiário ou júnior</strong> como Desenvolvedor Backend ou Engenheiro de Dados. Possuo disponibilidade para remoto, híbrido ou presencial em <strong>Brasília-DF</strong>.
+        Em <strong>engenharia de dados</strong>, projeto pipelines end-to-end em <strong>arquitetura Medalhão</strong> (Bronze, Silver e Gold) usando <strong>AWS, Airflow, Spark e dbt</strong>, cobrindo ingestão, orquestração, modelagem dimensional e qualidade dos dados, com infraestrutura provisionada via <strong>Terraform</strong> e processamento em lote e em tempo real (Kafka).
       </p>
+      <p>
+        Tenho experiência com <strong>SQL e BI em ambiente corporativo</strong>: atualmente sou Analista de Dados Aprendiz na <strong>Age Fibra</strong>, onde otimizo consultas, construo dashboards em Power BI e transformo planilhas operacionais em painéis gerenciais. Sou graduando em <strong>Ciência de Dados e Machine Learning</strong> no UniCEUB e tenho <strong>inglês avançado (B2)</strong>.
+      </p>
+      <p>
+        Meu objetivo é atuar em times de tecnologia, no Brasil ou no exterior, em posições de desenvolvimento back-end, full stack ou engenharia de dados, com disponibilidade para modelo remoto, híbrido ou presencial.
+      </p>
+      <div class="sobre-highlights">
+        <div class="highlight"><b>4 projetos completos</b><span>APIs, lakehouse, serverless e painel web, todos no GitHub</span></div>
+        <div class="highlight"><b>Testes e CI/CD</b><span>Pytest, Vitest, ruff, mypy e GitHub Actions nos projetos</span></div>
+        <div class="highlight"><b>Dados ponta a ponta</b><span>Ingestão, orquestração, modelagem e qualidade</span></div>
+        <div class="highlight"><b>Infra como código</b><span>AWS provisionada com Terraform e deploy via OIDC</span></div>
+      </div>
     </div>
     <div class="sobre-info reveal">
       <div class="info-row">
@@ -890,7 +954,7 @@
       </div>
       <div class="info-row">
         <span class="info-label">Cargo</span>
-        <span class="info-val">Dev Backend / Eng. de Dados</span>
+        <span class="info-val">Engenheiro de Software</span>
       </div>
       <div class="info-row">
         <span class="info-label">Inglês</span>
@@ -898,11 +962,19 @@
       </div>
       <div class="info-row">
         <span class="info-label">Email</span>
-        <span class="info-val"><a href="mailto:jpqueirozagular@gmail.com">jpqueirozagular@gmail.com</a></span>
+        <span class="info-val"><a class="link-inline" href="mailto:jpqueirozaguiar@gmail.com">jpqueirozaguiar@gmail.com</a></span>
       </div>
       <div class="info-row">
         <span class="info-label">Telefone</span>
-        <span class="info-val"><a href="tel:+5561998748156">(61) 99874-8156</a></span>
+        <span class="info-val"><a class="link-inline" href="tel:+5561998748156">(61) 99874-8156</a></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">GitHub</span>
+        <span class="info-val"><a class="link-inline" href="https://github.com/queiroz107911" target="_blank" rel="noopener">github.com/queiroz107911</a></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">LinkedIn</span>
+        <span class="info-val"><a class="link-inline" href="https://www.linkedin.com/in/qz-joao" target="_blank" rel="noopener">linkedin.com/in/qz-joao</a></span>
       </div>
       <div class="info-row">
         <span class="info-label">Regime</span>
@@ -916,7 +988,7 @@
 <section id="experiencia" style="background: var(--bg2)">
   <div class="section-header reveal">
     <span class="section-num">02</span>
-    <h2 class="section-title">Experiência</h2>
+    <h2 class="section-title">Experiência profissional</h2>
     <div class="section-line"></div>
   </div>
   <div class="exp-list">
@@ -926,73 +998,97 @@
         <div class="exp-role">Analista de Dados Aprendiz</div>
         <div class="exp-company">Age Fibra · Presencial · Brasília - DF</div>
         <ul class="exp-bullets">
-          <li>Construção e manutenção de relatórios em Power BI e Excel para planejamento estratégico</li>
-          <li>Otimização de queries SQL para geração de KPIs e dashboards gerenciais</li>
-          <li>Extração e tratamento de dados para apoio à decisão e automação de processos operacionais</li>
+          <li>Otimização de <strong>consultas SQL</strong> para geração de KPIs e dashboards gerenciais, garantindo consistência dos dados entre as fontes</li>
+          <li>Construção e manutenção de relatórios em <strong>Power BI</strong> e <strong>Excel</strong></li>
+          <li>Construí um <strong>BI do zero</strong> a partir da planilha de comissões dos vendedores e de cada canal de vendas, com acompanhamento mês a mês, trazendo todas as informações de forma organizada</li>
+          <li>Desenvolvi outro BI com base no BI da Diretoria Comercial, <strong>simplificando-o</strong> para exibir apenas as informações específicas de alguns setores</li>
         </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Python</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
+<!-- HABILIDADES -->
+<section id="habilidades">
   <div class="section-header reveal">
     <span class="section-num">03</span>
-    <h2 class="section-title">Tecnologias</h2>
+    <h2 class="section-title">Habilidades</h2>
     <div class="section-line"></div>
   </div>
   <div class="skills-grid">
     <div class="skill-card reveal">
-      <div class="skill-cat">Linguagens</div>
+      <div class="skill-cat">Back-end</div>
       <div class="skill-tags">
+        <span class="skill-tag">TypeScript / JavaScript</span>
         <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">TypeScript</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-cat">Cloud</div>
-      <div class="skill-tags">
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Terraform</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-cat">Frameworks</div>
-      <div class="skill-tags">
         <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">Django</span>
-        <span class="skill-tag">Express</span>
-        <span class="skill-tag">NestJS</span>
+        <span class="skill-tag">Node.js</span>
         <span class="skill-tag">Next.js</span>
+        <span class="skill-tag">Fastify</span>
+        <span class="skill-tag">Express</span>
+        <span class="skill-tag">Pydantic</span>
+        <span class="skill-tag">SQLAlchemy</span>
+        <span class="skill-tag">JWT</span>
+        <span class="skill-tag">SQL Server</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Redis</span>
       </div>
     </div>
     <div class="skill-card reveal">
-      <div class="skill-cat">Ferramentas</div>
+      <div class="skill-cat">Front-end</div>
       <div class="skill-tags">
-        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Next.js (App Router)</span>
         <span class="skill-tag">React</span>
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">Excel</span>
-        <span class="skill-tag">Airflow</span>
-        <span class="skill-tag">Pandas</span>
-        <span class="skill-tag">PySpark</span>
-        <span class="skill-tag">dbt</span>
-        <span class="skill-tag">Databricks</span>
-        <span class="skill-tag">n8n</span>
-        <span class="skill-tag">Automações</span>
-        <span class="skill-tag">IA</span>
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">Consumo de APIs</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-cat">Cloud e DevOps</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Git / GitHub</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">GitHub Actions (CI/CD)</span>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Terraform</span>
+        <span class="skill-tag">Prometheus</span>
+        <span class="skill-tag">Grafana</span>
       </div>
     </div>
     <div class="skill-card reveal">
       <div class="skill-cat">Testes</div>
       <div class="skill-tags">
-        <span class="skill-tag">Pytest</span>
-        <span class="skill-tag">Jest</span>
         <span class="skill-tag">Vitest</span>
+        <span class="skill-tag">Jest</span>
+        <span class="skill-tag">Supertest</span>
+        <span class="skill-tag">Pytest</span>
+        <span class="skill-tag">ruff</span>
+        <span class="skill-tag">mypy</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-cat">Dados</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">PySpark</span>
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">Airflow</span>
+        <span class="skill-tag">dbt</span>
+        <span class="skill-tag">Kafka</span>
+        <span class="skill-tag">Delta Lake</span>
+        <span class="skill-tag">Streamlit</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Databricks</span>
+        <span class="skill-tag">Modelagem dimensional</span>
+        <span class="skill-tag">Arquitetura Medalhão</span>
       </div>
     </div>
   </div>
@@ -1009,51 +1105,92 @@
 
     <div class="project-card reveal">
       <div class="project-top">
-        <div class="project-icon">⚡</div>
+        <div class="project-icon">🏛️</div>
         <div class="project-links">
-          <a href="https://github.com/queiroz107911/eventbridge-api" target="_blank" class="project-link" title="GitHub">⌥</a>
+          <a href="https://github.com/queiroz107911/painel-transparencia" target="_blank" rel="noopener" class="project-link" title="Ver no GitHub">GitHub ↗</a>
         </div>
       </div>
       <div class="project-body">
-        <div class="project-name">EventBridge API — Processamento Assíncrono de Eventos</div>
+        <div class="project-name">Painel de Transparência</div>
+        <div class="project-sub">Contratações Públicas (Dados Abertos)</div>
         <ul class="project-bullets">
-          <li><strong>Testes automatizados:</strong> cobri a API com suite de testes em Jest, validando fluxos de fila e reprocessamento antes da entrega</li>
-          <li><strong>Controle de versão e fluxo Git:</strong> desenvolvi e versionei o projeto no GitHub, com histórico de commits organizado por funcionalidade</li>
-          <li><strong>Resiliência:</strong> implementei retry automático com backoff exponencial (BullMQ), reduzindo perda de eventos em falhas transitórias</li>
-          <li><strong>Arquitetura desacoplada:</strong> separei API e worker em processos independentes conectados via Redis, permitindo escalar o processamento sem impactar o tempo de resposta da API</li>
+          <li>Criei <strong>job agendado de ingestão</strong> da API pública de contratações (PNCP) com paginação, rate limit, retry com backoff, carga incremental e backfill</li>
+          <li>Estruturei o <strong>SQL Server em camadas</strong> (staging, core e views), com MERGE idempotente e checagens de qualidade (nulos, datas inválidas, duplicidades) com tabela de rejeitados</li>
+          <li>Otimizei consultas com índices e plano de execução e expus <strong>API REST em Fastify</strong> com filtros por órgão, modalidade e período e paginação</li>
+          <li>Desenvolvi o painel em <strong>Next.js</strong> com Server Components, tabelas filtráveis e gráficos de valor contratado por órgão</li>
+          <li>Escrevi testes com Vitest mockando a API externa, configurei GitHub Actions (testes e build por pull request), Docker Compose e deploy público</li>
         </ul>
         <div class="project-stack">
-          <span class="stack-tag">Node.js</span>
-          <span class="stack-tag">Express</span>
-          <span class="stack-tag">BullMQ</span>
-          <span class="stack-tag">Redis</span>
-          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Next.js</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">Fastify</span>
+          <span class="stack-tag">SQL Server</span>
           <span class="stack-tag">Docker</span>
-          <span class="stack-tag">Jest</span>
+          <span class="stack-tag">GitHub Actions</span>
+          <span class="stack-tag">Vitest</span>
         </div>
       </div>
     </div>
 
     <div class="project-card reveal">
       <div class="project-top">
-        <div class="project-icon">🏔️</div>
+        <div class="project-icon">⚡</div>
         <div class="project-links">
-          <a href="https://github.com/queiroz107911/Pipeline-End-to-End" target="_blank" class="project-link" title="GitHub">⌥</a>
+          <a href="https://github.com/queiroz107911/eventbridge-api" target="_blank" rel="noopener" class="project-link" title="Ver no GitHub">GitHub ↗</a>
         </div>
       </div>
       <div class="project-body">
-        <div class="project-name">Pipeline End-to-End — Arquitetura Medallion</div>
+        <div class="project-name">EventBridge API</div>
+        <div class="project-sub">Processamento Assíncrono e Confiável de Eventos</div>
         <ul class="project-bullets">
-          <li><strong>Testes e qualidade:</strong> criei suite de 13 testes automatizados (pytest), cobrindo transformações unitárias e o pipeline de integração completo</li>
-          <li><strong>Ambiente reprodutível:</strong> containerizei o ambiente com Docker e Docker Compose, eliminando divergência entre ambiente local e produção</li>
-          <li>Implementei arquitetura Medallion (Bronze → Silver → Gold), separando dado bruto de dado tratado e otimizando consultas analíticas</li>
+          <li>Desenvolvi <strong>API REST em FastAPI</strong> (Pydantic, OpenAPI) em camadas (router, service, repository), com PostgreSQL, SQLAlchemy e Alembic</li>
+          <li>Separei API e <strong>workers Celery</strong> em processos independentes via Redis, escalando o processamento sem impactar o tempo de resposta da API</li>
+          <li>Garanti <strong>idempotência</strong> com Idempotency-Key e unique constraint; implementei retry com backoff exponencial e jitter, dead-letter e reprocessamento manual</li>
+          <li>Implementei <strong>autenticação JWT com RBAC</strong> (admin, produtor e leitor), rate limiting e webhooks assinados com HMAC</li>
+          <li>Adicionei logs JSON, métricas Prometheus/Grafana e Flower, testes Pytest e CI no GitHub Actions (ruff, mypy, pytest) com Docker Compose</li>
         </ul>
         <div class="project-stack">
           <span class="stack-tag">Python</span>
-          <span class="stack-tag">Pandas</span>
-          <span class="stack-tag">Parquet</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Celery</span>
+          <span class="stack-tag">Redis</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">SQLAlchemy</span>
+          <span class="stack-tag">Alembic</span>
           <span class="stack-tag">Docker</span>
           <span class="stack-tag">Pytest</span>
+          <span class="stack-tag">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-top">
+        <div class="project-icon">📈</div>
+        <div class="project-links">
+          <a href="https://github.com/queiroz107911/lakehouse-mercado" target="_blank" rel="noopener" class="project-link" title="Ver no GitHub">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-name">Lakehouse de Mercado Financeiro</div>
+        <div class="project-sub">Pipeline Batch e Streaming (Medalhão)</div>
+        <ul class="project-bullets">
+          <li>Construí <strong>lakehouse Medalhão</strong> (Bronze, Silver, Gold) em Delta Lake/MinIO, com ingestão em lote e em tempo real via <strong>Kafka e Spark Structured Streaming</strong></li>
+          <li>Orquestrei com <strong>Airflow</strong> DAGs PySpark de limpeza, deduplicação e tratamento de atrasos, com MERGE no Delta Lake e alertas de falha</li>
+          <li>Modelei a Gold com <strong>dbt</strong> (fatos e dimensões, variação percentual, médias móveis e volatilidade), com testes de dados, documentação de linhagem e validações com <strong>Great Expectations</strong> que bloqueiam a promoção de dados inválidos</li>
+          <li>Disponibilizei dashboard em <strong>Streamlit</strong> consumindo a Gold, com CI no GitHub Actions executando dbt build e toda a stack em Docker Compose</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">PySpark</span>
+          <span class="stack-tag">Delta Lake</span>
+          <span class="stack-tag">Kafka</span>
+          <span class="stack-tag">Airflow</span>
+          <span class="stack-tag">dbt</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">MinIO</span>
+          <span class="stack-tag">Great Expectations</span>
+          <span class="stack-tag">Docker</span>
         </div>
       </div>
     </div>
@@ -1062,14 +1199,17 @@
       <div class="project-top">
         <div class="project-icon">🏦</div>
         <div class="project-links">
-          <a href="https://github.com/queiroz107911/datalake-bacen" target="_blank" class="project-link" title="GitHub">⌥</a>
+          <a href="https://github.com/queiroz107911/datalake-bacen" target="_blank" rel="noopener" class="project-link" title="Ver no GitHub">GitHub ↗</a>
         </div>
       </div>
       <div class="project-body">
-        <div class="project-name">DataLake Pipeline — Dados Financeiros (BACEN)</div>
+        <div class="project-name">DataLake Pipeline</div>
+        <div class="project-sub">Ingestão e Processamento de Dados Financeiros (BACEN)</div>
         <ul class="project-bullets">
-          <li>Resolvi erro HTTP 406 retornado pela API do BACEN durante a ingestão agendada, ajustando os headers da requisição</li>
-          <li>Provisionei 31 recursos AWS via Terraform (S3, IAM, Lambda, Glue, EventBridge, Athena), aplicando princípio de menor privilégio</li>
+          <li>Construí <strong>pipeline serverless na AWS</strong> (EventBridge, Lambda, Glue, S3) que ingere SELIC e IPCA do BACEN de forma incremental e idempotente, em camadas Bronze, Silver e Gold (Parquet particionado) consultadas via Athena</li>
+          <li>Orquestrei com <strong>Step Functions</strong> (ingestão, Silver, Gold e catálogo) com Retry e Catch por etapa e materializei a Gold em job Glue PySpark (média mensal, variação percentual, acumulado 12 meses)</li>
+          <li>Provisionei a infraestrutura com <strong>Terraform</strong> (S3, IAM menor privilégio, Lambda, Glue, Step Functions, Athena) com estado remoto em S3 e CI/CD no GitHub Actions (pytest e plan em PR, apply no merge, via OIDC)</li>
+          <li>Implementei monitoramento com <strong>CloudWatch Alarms</strong> (erros, throttles, duração e falhas do Glue) e alertas via SNS</li>
         </ul>
         <div class="project-stack">
           <span class="stack-tag">Python</span>
@@ -1077,9 +1217,11 @@
           <span class="stack-tag">AWS Glue</span>
           <span class="stack-tag">AWS Athena</span>
           <span class="stack-tag">AWS Lambda</span>
+          <span class="stack-tag">Step Functions</span>
           <span class="stack-tag">Terraform</span>
           <span class="stack-tag">Parquet</span>
           <span class="stack-tag">Pytest</span>
+          <span class="stack-tag">GitHub Actions</span>
         </div>
       </div>
     </div>
@@ -1101,14 +1243,6 @@
         <div class="edu-name">Ciência de Dados e Machine Learning</div>
         <div class="edu-inst">CEUB — Centro Universitário de Brasília</div>
         <div class="edu-desc">Banco de Dados · Business Intelligence · Big Data · DevOps · Deep Learning · IA · Python · Engenharia de Software — Em andamento</div>
-      </div>
-    </div>
-    <div class="edu-card reveal">
-      <div class="edu-period">2024<br>2025</div>
-      <div>
-        <div class="edu-name">Engenharia de Redes e Comunicação</div>
-        <div class="edu-inst">UnB — Universidade de Brasília</div>
-        <div class="edu-desc">Cálculo · Álgebra Linear · Estrutura de Dados · Probabilidade e Estatística · Teoria dos Grafos — Incompleto</div>
       </div>
     </div>
     <div class="edu-card reveal">
@@ -1166,22 +1300,22 @@
   <div class="contact-grid">
     <div class="contact-text reveal">
       <div class="contact-links">
-        <a href="mailto:jpqueirozagular@gmail.com" class="contact-link">
+        <a href="mailto:jpqueirozaguiar@gmail.com" class="contact-link">
           <span class="contact-link-icon">✉</span>
           <span class="contact-link-label">Email</span>
-          <span>jpqueirozagular@gmail.com</span>
+          <span>jpqueirozaguiar@gmail.com</span>
         </a>
         <a href="tel:+5561998748156" class="contact-link">
           <span class="contact-link-icon">☎</span>
           <span class="contact-link-label">Telefone</span>
           <span>(61) 99874-8156</span>
         </a>
-        <a href="https://www.linkedin.com/in/qz-joao/" target="_blank" class="contact-link">
+        <a href="https://www.linkedin.com/in/qz-joao" target="_blank" rel="noopener" class="contact-link">
           <span class="contact-link-icon">in</span>
           <span class="contact-link-label">LinkedIn</span>
           <span>linkedin.com/in/qz-joao</span>
         </a>
-        <a href="https://github.com/queiroz107911" target="_blank" class="contact-link">
+        <a href="https://github.com/queiroz107911" target="_blank" rel="noopener" class="contact-link">
           <span class="contact-link-icon">⌥</span>
           <span class="contact-link-label">GitHub</span>
           <span>github.com/queiroz107911</span>
@@ -1192,7 +1326,7 @@
 </section>
 
 <footer>
-  <p>© 2026 <span>João Pedro Queiroz</span> — Desenvolvedor Backend / Engenheiro de Dados</p>
+  <p>© 2026 <span>João Pedro Queiroz</span> — Engenheiro de Software</p>
 </footer>
 
 <script>
